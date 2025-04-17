@@ -30,7 +30,7 @@ const HeroContent = () => {
   return (
     <div className="min-h-screen relative flex items-center justify-center p-4 overflow-hidden">
       {/* Hero content wrapper */}
-      <div className="container max-w-6xl z-10 md:ml-12">
+      <div className="container max-w-6xl z-10 text-center">
         <div className="flex flex-col items-center text-center space-y-8 md:space-y-12">
           {/* Name/Brand */}
           <div 
