@@ -1,13 +1,42 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { Suspense, lazy } from 'react';
+import Navigation from '@/components/Navigation';
+import HeroContent from '@/components/HeroContent';
+
+// Lazy load the 3D scene component to improve initial load time
+const HeroScene = lazy(() => import('@/components/HeroScene'));
+
+// Loader component for the 3D scene
+const SceneLoader = () => (
+  <div className="fixed inset-0 flex items-center justify-center bg-background">
+    <div className="relative w-24 h-24">
+      <div className="absolute inset-0 border-t-4 border-brand-purple rounded-full animate-spin"></div>
+      <div className="absolute inset-5 border-t-4 border-brand-orange rounded-full animate-spin" style={{ animationDirection: 'reverse' }}></div>
+    </div>
+  </div>
+);
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <main className="min-h-screen relative overflow-hidden">
+      <Navigation />
+      
+      <Suspense fallback={<SceneLoader />}>
+        <HeroScene />
+      </Suspense>
+      
+      {/* Hero overlay gradient */}
+      <div className="fixed inset-0 hero-gradient -z-10"></div>
+      
+      {/* Main content */}
+      <HeroContent />
+      
+      {/* Add additional sections here */}
+      <div id="work" className="h-screen bg-background/50 flex items-center justify-center">
+        <h2 className="text-4xl font-bold text-white">My Work</h2>
+        {/* Portfolio content would go here */}
       </div>
-    </div>
+    </main>
   );
 };
 
