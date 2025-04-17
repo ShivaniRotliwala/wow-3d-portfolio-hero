@@ -1,6 +1,6 @@
 
 import { Suspense, lazy } from 'react';
-import Navigation from '@/components/Navigation';
+import SideNavigation from '@/components/SideNavigation';
 import HeroContent from '@/components/HeroContent';
 
 // Lazy load the 3D scene component to improve initial load time
@@ -19,7 +19,7 @@ const SceneLoader = () => (
 const Index = () => {
   return (
     <main className="min-h-screen relative overflow-hidden">
-      <Navigation />
+      <SideNavigation />
       
       <Suspense fallback={<SceneLoader />}>
         <HeroScene />
@@ -30,12 +30,6 @@ const Index = () => {
       
       {/* Main content */}
       <HeroContent />
-      
-      {/* Add additional sections here */}
-      <div id="work" className="h-screen bg-background/50 flex items-center justify-center">
-        <h2 className="text-4xl font-bold text-white">My Work</h2>
-        {/* Portfolio content would go here */}
-      </div>
     </main>
   );
 };

@@ -1,10 +1,12 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Briefcase, User, Mail, ExternalLink } from "lucide-react";
+import { ChevronDown, Briefcase, Mail, Behance, Linkedin, Instagram } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 const HeroContent = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
   
   useEffect(() => {
     // Animate in content after a short delay
@@ -16,17 +18,19 @@ const HeroContent = () => {
   }, []);
   
   const scrollToWork = () => {
-    // This would scroll to a portfolio section below
-    const workSection = document.getElementById('work');
-    if (workSection) {
-      workSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Navigate to projects page
+    navigate('/projects');
+  };
+  
+  const handleContactClick = () => {
+    // Navigate to contact page
+    navigate('/contact');
   };
   
   return (
     <div className="min-h-screen relative flex items-center justify-center p-4 overflow-hidden">
       {/* Hero content wrapper */}
-      <div className="container max-w-6xl z-10">
+      <div className="container max-w-6xl z-10 md:ml-12">
         <div className="flex flex-col items-center text-center space-y-8 md:space-y-12">
           {/* Name/Brand */}
           <div 
@@ -34,8 +38,9 @@ const HeroContent = () => {
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
             }`}
           >
-            <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-gradient tracking-tight">
-              Creative Designer
+            <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-gradient tracking-tight leading-tight">
+              Crafting Click-Worthy, <br className="hidden md:block" />
+              Scroll-Stopping Stuff
             </h1>
             <div className="mt-3 font-display tracking-wide">
               <span className="text-sm md:text-base bg-brand-vivid-purple/20 text-brand-light-purple px-4 py-1 rounded-full">
@@ -65,15 +70,16 @@ const HeroContent = () => {
               className="bg-brand-vivid-purple hover:bg-brand-vivid-purple/90 text-white"
               onClick={scrollToWork}
             >
-              <Briefcase className="mr-2 h-4 w-4" /> View My Work
+              <Briefcase className="mr-2 h-4 w-4" /> Tap Into My Imagination
             </Button>
             
             <Button 
               variant="outline" 
               size="lg" 
               className="border-brand-purple text-brand-light-purple hover:bg-brand-purple/20"
+              onClick={handleContactClick}
             >
-              <Mail className="mr-2 h-4 w-4" /> Contact Me
+              <Mail className="mr-2 h-4 w-4" /> Get in Touch
             </Button>
           </div>
           
@@ -83,18 +89,39 @@ const HeroContent = () => {
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            {["dribbble", "behance", "linkedin", "instagram"].map((platform) => (
-              <a 
-                key={platform}
-                href={`#${platform}`} 
-                className="p-2 rounded-full bg-brand-dark-purple/60 hover:bg-brand-purple/30 
-                          border border-brand-purple/30 backdrop-blur-sm
-                          transition-all duration-300 group"
-                aria-label={platform}
-              >
-                <ExternalLink className="w-5 h-5 text-brand-light-purple group-hover:text-white" />
-              </a>
-            ))}
+            <a 
+              href="https://behance.net" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-brand-dark-purple/60 hover:bg-brand-purple/30 
+                        border border-brand-purple/30 backdrop-blur-sm
+                        transition-all duration-300 group"
+              aria-label="Behance"
+            >
+              <Behance className="w-5 h-5 text-brand-light-purple group-hover:text-white" />
+            </a>
+            <a 
+              href="https://linkedin.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-brand-dark-purple/60 hover:bg-brand-purple/30 
+                        border border-brand-purple/30 backdrop-blur-sm
+                        transition-all duration-300 group"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5 text-brand-light-purple group-hover:text-white" />
+            </a>
+            <a 
+              href="https://instagram.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-brand-dark-purple/60 hover:bg-brand-purple/30 
+                        border border-brand-purple/30 backdrop-blur-sm
+                        transition-all duration-300 group"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-5 h-5 text-brand-light-purple group-hover:text-white" />
+            </a>
           </div>
         </div>
       </div>
