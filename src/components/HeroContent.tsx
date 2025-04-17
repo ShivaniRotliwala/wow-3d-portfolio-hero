@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Briefcase, Mail, Behance, Linkedin, Instagram } from "lucide-react";
+import { ChevronDown, Briefcase, Mail, Square, Linkedin, Instagram } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 
 const HeroContent = () => {
@@ -98,7 +98,7 @@ const HeroContent = () => {
                         transition-all duration-300 group"
               aria-label="Behance"
             >
-              <Behance className="w-5 h-5 text-brand-light-purple group-hover:text-white" />
+              <Square className="w-5 h-5 text-brand-light-purple group-hover:text-white" />
             </a>
             <a 
               href="https://linkedin.com" 
